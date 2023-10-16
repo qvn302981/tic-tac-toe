@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import { Cell } from './assets/components/cell'
-import { Reset } from './assets/components/reset'
+import { Cell } from './components/cell';
+import { Reset } from './components/reset';
 function App() {
 
   const [xIsNext, setXIsNext] = useState(true);
@@ -69,33 +69,14 @@ function App() {
           {showResult}
         </section>
         <section className="container">
-          <Cell classes='tile' values={array[0]} onClick={() => {
-            handleClick(0)
-          }} />
-          <Cell classes='tile' values={array[1]} onClick={() => {
-            handleClick(1)
-          }} />
-          <Cell classes='tile' values={array[2]} onClick={() => {
-            handleClick(2)
-          }} />
-          <Cell classes='tile' values={array[3]} onClick={() => {
-            handleClick(3)
-          }} />
-          <Cell classes='tile' values={array[4]} onClick={() => {
-            handleClick(4)
-          }} />
-          <Cell classes='tile' values={array[5]} onClick={() => {
-            handleClick(5)
-          }} />
-          <Cell classes='tile' values={array[6]} onClick={() => {
-            handleClick(6)
-          }} />
-          <Cell classes='tile' values={array[7]} onClick={() => {
-            handleClick(7)
-          }} />
-          <Cell classes='tile' values={array[8]} onClick={() => {
-            handleClick(8)
-          }} />
+          {array.map((items, index) => (
+            <Cell
+              classes='tile'
+              key={index}
+              values={items}
+              onClick={() => {handleClick(index)}}
+            />
+          ))}
 
         </section>
         <section className="display announcer hide"></section>
